@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HW</title>
+
+    <style type="text/css">
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+            background-color: black;
+        }
+
+        .wrap {
+            width: 100%;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            width: 500px;
+            height: 725px;
+
+            background-color: black;
+            border-radius: 15px;
+
+            flex-direction: column;
+            display: flex;
+            align-items: center;
+        }
+
+        .row {
+            width: 480px;
+
+            display: flex;
+        }
+
+        .diode {
+            width: 100px;
+            height: 100px;
+
+            background-color: #333333;
+            border-radius: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+            font-size: 50px;
+            font-weight: 900;
+            font-family: monospace;
+
+            cursor: pointer;
+            transition: .1s linear;
+
+            margin: 10px 10px;
+        }
+
+        .diode:hover {
+            background-color: grey;
+        }
+
+        .diode_grey {
+            background-color: #b0b0b0;
+
+            color: black;
+        }
+
+        .diode_grey:hover {
+            background-color: grey;
+        }
+
+        .diode_orange {
+            background-color: darkorange;
+        }
+
+        .diode_orange:hover {
+            background-color: #ff7b00;
+        }
+
+        .diode_zero {
+            width: 220px;
+            height: 100px;
+
+            display: flex;
+            justify-content: left;
+            align-items: center;
+
+            padding: 0px 0px 0px 35px;
+
+            border-radius: 50px;
+        }
+
+        .input {
+           width: 85%;
+           height: 100px;
+
+           font-size: 75px;
+           text-align: right;
+
+            border: none;
+            outline: none;
+            user-select: none;
+
+            background-color: black;
+
+            margin-top: 25px;
+            margin-bottom: 5px;
+
+            color: white;
+        }
+
+        .plus_minus {
+            letter-spacing: -5px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="wrap">
+
+        <div class="box">
+
+            <input type="text" class="input" id="input" name="">
+
+            <div class="row">
+                
+                <div class="diode diode_grey" id="allclear">AC</div>
+                <div class="diode diode_grey plus_minus" id="plusminus">+/-</div>
+                <div class="diode diode_grey" id="procent">%</div>
+                <div class="diode diode_orange" id="dilenya">:</div>
+
+            </div>
+
+            <div class="row">
+                
+                <div class="diode" id="diode_7">7</div>
+                <div class="diode" id="diode_8">8</div>
+                <div class="diode" id="diode_9">9</div>
+                <div class="diode diode_orange" id="mnozenya">x</div>
+
+            </div>
+
+            <div class="row">
+                
+                <div class="diode" id="diode_4">4</div>
+                <div class="diode" id="diode_5">5</div>
+                <div class="diode" id="diode_6">6</div>
+                <div class="diode diode_orange" id="minus">-</div>
+
+            </div>
+
+            <div class="row">
+                
+                <div class="diode" id="diode_1">1</div>
+                <div class="diode" id="diode_2">2</div>
+                <div class="diode" id="diode_3">3</div>
+                <div class="diode diode_orange" id="plus">+</div>
+
+            </div>
+
+            <div class="row">
+                
+                <div class="diode diode_zero" id="diode_0">0</div>
+                <div class="diode diode_krapka" id="krapka">.</div>
+                <div class="diode diode_orange" id="dorivnye">=</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        
+        let result = '';
+        let setDiode = false;
+
+        diode_1.onclick = function() {
+            result += '1';
+            input.value = result;
+        }
+
+        diode_2.onclick = function() {
+            result += '2';
+            input.value = result;
+        }
+
+        diode_3.onclick = function() {
+            result += '3';
+            input.value = result;
+        }
+
+        diode_4.onclick = function() {
+            result += '4';
+            input.value = result;
+        }
+
+        diode_5.onclick = function() {
+            result += '5';
+            input.value = result;
+        }
+
+        diode_6.onclick = function() {
+            result += '6';
+            input.value = result;
+        }
+
+        diode_7.onclick = function() {
+            result += '7';
+            input.value = result;
+        }
+
+        diode_8.onclick = function() {
+            result += '8';
+            input.value = result;
+        }
+
+        diode_9.onclick = function() {
+            result += '9';
+            input.value = result;
+        }
+
+        diode_0.onclick = function() {
+            result += '0';
+            input.value = result;
+        }
+
+        dorivnye.onclick = function() {
+            input.value = eval(result);
+            result = '';
+        }
+
+        plus.onclick = function() {
+            result += '+';
+            input.value = result;
+        }
+
+        minus.onclick = function() {
+            result += '-';
+            input.value = result;
+        }
+
+        mnozenya.onclick = function() {
+           result += '*';
+            input.value = result;
+        }
+
+        dilenya.onclick = function() {
+            result += '/';
+            input.value = result;
+        }
+
+        krapka.onclick = function() {
+            if ( setDiode === false ) {
+                result += '.';
+                input.value = result;
+                setDiode = true;
+            } else {
+                input.value = result;
+            }
+        }
+
+        allclear.onclick = function() {
+            input.value = '';
+        }
+
+        plusminus.onclick = function() {
+            result = input.value * (-1);
+            input.value = result;
+        }
+
+        procent.onclick = function() {
+            if ( setDiode === false ) {
+                result += '%';
+                input.value = result;
+                setDiode = true;
+            } else {
+                input.value = result;
+            }
+        }
+
+    </script>
+
+</body>
+</html>
